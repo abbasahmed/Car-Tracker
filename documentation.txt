@@ -1,0 +1,107 @@
+Name		: Abbas Ahmed
+Peoplesoft ID	: 4165368
+Pitt ID		: AZA16@pitt.edu
+
+----------------------------------
+============RUNTIMES==============
+
+Insert		:	O(lgN)
+Remove		:	O(lgN)
+Update		:	O(lgN)
+Min Price	:	O(1)
+Min Mileage	:	O(1)
+--
+Make and Model specific:
+
+Min Price	:	O(1)	[Hash Table  --> IndexMinPQ -> Min Price]
+Min Mileage	:	O(1)	[Hash Table  --> IndexMinPQ -> Min Mileage]
+
+----------------------
+IndexMinPQ:
+
+min		:	O(1)
+insert		:	O(lgN)
+remove		:	O(lgN)
+changeKey	:	O(lgN)
+
+----------------------------------
+= DOCUMENTATION FOR ASSIGNMENT 3 =
+----------------------------------
+
+For this assignment's implementation for the following files:
+
+1) Car.java: 
+
+	This is an Object class that stores all the information of the Car. It also
+	stores the indices of each priority queue. NOTE: There are 4 priority queues
+	being handled in this project. The first two are the normal indexable priority
+	queues based on price and mileage whereas the other differentiate in price and mileage
+	based on their make and model. 
+
+2) IndexMinPQ.java: 
+
+	I have used the book's code provided by Robert Sedgewick and Kevin Wayne. I 
+	modified it to generate the index in itself. Whenever it updates or adds a car,
+	the index for that car is modified in the Car.java for the respective priority
+	queues as discussed in Car.java's implementation. I have also implemented the 
+	functionality of resizing the priority queue whenever it fills up. This
+	lets us keep adding more cars without having to worry about the space as it
+	only resizes when filled up. Finally, I've made sure all the methods work as they 
+	did in author's implementation with the same runtimes. The memory utilization will
+	be around O(n), which depends on the number of items in the priority queue.
+
+3) MyCarQueue.java:
+
+	This is a wrapper class that handles all the IndexMinPQ queues. I have
+	implemented two hash tables too. The first one handles all the cars. It takes
+	in the VIN of the car and hashes it to the Car it corresponds to. The other hash
+	table takes in make and model concatenated in one string and separated by a special character, 
+	and hashes it to the priority queue it corresponds to.
+	The way I've implemented the functionality of retrieving minimum price and mileage
+	by make and model is by creating an indexable minimum priority queue for every make and
+	model. If the make and model exists in the hash table, it just adds the new car
+	to that specific make and model's priority queue. If not, creates a new one. MyCarQueue.java
+	also contains methods such as retrieving minimum price or mileage car, updating a car,
+	removing a car, and adding a new car. All of these methods make sure that every 
+	priority queue related to is also updated whenever a change is made. 
+	Using Hash Tables reduces our runtime to constant runtimes to get the Car's info.
+
+4) CarTracker.java: 
+
+	This is the main driver. If cars.txt exists, it adds the cars from that file first. 
+	It does all the basic functionality such as reading in all the inputs and also handles 
+	all the errors. 
+
+5) SeparateChainingHashST.java:
+
+	I have used the book's code provided by Robert Sedgewick and Kevin Wayne.		
+
+	For this project I've used a Hash table with Closed Addressing collision resolution.
+	Separate Chaining Hash Table uses that and it helps us a lot with avoiding collisions. 
+	In Linear Probing we have to make sure that we keep a portion of the table empty to 
+	maintain a good performance. In other words when the load factor reaches 1, the runtime
+	for Linear Probing degrades to O(n). However, with Separate Chaining we can try our best
+	to keep our runtimes constant. It creates a linked list if we end up hashing to a same 
+	index as occupied by another key. The linked list can degrade to O(n) but this is highly 
+	unlikely if we use a good hashing method. We also make sure that we resize our hash table in 
+	Separate Chaining Hash Table if the average size of the linked list gets to around 10. 
+	Using this approach, we try our best to avoid anything higher than constant runtime. In order to 
+	produce sparser hash codes to avoid collisions I've also implemented the Horner's method, 
+	instead of using Java's hashCode method, of which we do not the implementation in detail or know
+	too little about the runtime and efficiency. The runtime for Horner's method will be constant.
+	This provides us with a good method to improve our hashing scenario in order to degrade our runtime
+	to linear, like we discussed earlier. Overall this solution is the more favorable one in the long 
+	run for large number of cars. In the best case we get a runtime of O(1) and in the worst case we 
+	get a runtime of O(n) but as we discussed about how it is implemented we try our best to avoid that. 
+	So our average case runtime will be constant time assuming that the Horner's method works well at 
+	generating a good hash code and resizing takes effect as soon as the average size of the list grows to 
+	10. As per the memory utilization, the Separate Chaining Hash Table will be a little costly since 
+	it uses up more space than linear probing. For m indices in our hash tables we'll also have to deal 
+	with a number of linked lists. With Separate Chaining Hash Tables, the memory utilization will be a 
+	little higher than linear probing but we do get an excellent solution to dealing with collisions. 
+	There will always be a trade off between using linear probing or separate chaining but Separate Chaining 
+	takes an edge when it comes to large number of applications and in this case, is the best solution to use,
+	assuming that we use this program in the long run. It is very unlikely that we hit the worst case for this 
+	solution with this approach. 
+
+
