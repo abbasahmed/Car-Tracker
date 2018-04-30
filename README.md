@@ -1,4 +1,4 @@
-# CS/COE 1501 Assignment 3  -- Car Trcker --
+# CS/COE 1501 Assignment 3  -- Car Tracker --
 
 ## Goal:
 To explore an advanced application of priority queues in order to gain a deeper understanding of the data structure.
