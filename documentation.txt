@@ -1,6 +1,3 @@
-Name		: Abbas Ahmed
-Peoplesoft ID	: 4165368
-Pitt ID		: AZA16@pitt.edu
 
 ----------------------------------
 ============RUNTIMES==============
