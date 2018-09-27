@@ -1,4 +1,4 @@
-# CS/COE 1501 Assignment 3  -- Car Tracker --
+# -- Car Tracker --
 
 ## Goal:
 To explore an advanced application of priority queues in order to gain a deeper understanding of the data structure.
@@ -49,7 +49,3 @@ These retrievals should be possible on the set of all entered cars or on the set
 	Name this file `documentation.txt`.
 	Be sure to describe your carefully document your approach to ease the effort required to trace through your code for grading.
 	Be sure to include descriptions of the runtime and space requirements of your approach and use them in your justification of why you think your approach is the best way to go.
-
-## Additional Notes/Hints:
-*  You are free to use code provided by the book authors in implementing your solution.  It is up to you to decide if it would be easier to modify the provided code to meet the requirements of this project or if it would be easier to start with a clean slate with all of your own code.
-*  Your program does not need to enforce that users enter properly formatted VIN numbers, but you must design your data structure to operate efficiently on VIN numbers as specified here.  This should make testing your program much easier.
